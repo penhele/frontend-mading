@@ -7,8 +7,12 @@ import StatsCard from "./stats-card";
 import { useCategories } from "@/features/category/hooks/use-categories";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { ROUTES } from "@/contants/routes";
 
 export default function DashboardPage() {
+  const router = useRouter();
+
   const { data: articles = [] } = useArticles();
   const { data: categories = [] } = useCategories();
 
@@ -27,7 +31,7 @@ export default function DashboardPage() {
 
       <div className="flex flex-col gap-2">
         <div className="">
-          <Button>
+          <Button onClick={() => router.push(ROUTES.DASHBOARD_CREATE_ARTICLE)}>
             <Plus /> Tambah Artikel
           </Button>
         </div>
