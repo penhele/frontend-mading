@@ -9,7 +9,7 @@ export interface Article {
   slug: string;
   status: string;
   user: User;
-  categories: Category[];
+  category: Category;
   createdAt: Date;
   updatedAt: string;
 }
