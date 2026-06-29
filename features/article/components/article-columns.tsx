@@ -6,6 +6,8 @@ import StatusSelect from "./status-select";
 import DeleteButton from "@/components/buttons/delete-button";
 import { deleteArticle } from "../api/delete-article";
 import { articleKeys } from "../queries/article-keys";
+import EditButton from "@/components/buttons/edit-button";
+import { ROUTES } from "@/contants/routes";
 
 export const articleColumns: ColumnDef<Article>[] = [
   {
@@ -39,9 +41,7 @@ export const articleColumns: ColumnDef<Article>[] = [
           mutationFn={deleteArticle}
           queryKey={articleKeys.all}
         />
-        <Button variant={"outline"} size={"icon-xs"}>
-          <Pencil />
-        </Button>
+        <EditButton route={ROUTES.DASHBOARD_UPDATE_ARTICLE(row.original.id)} />
       </div>
     ),
   },
