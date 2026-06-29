@@ -12,13 +12,15 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import { Category } from "@/features/category/types/category";
+import { cn } from "@/lib/utils";
 import { CartesianGrid, XAxis, YAxis, Bar, BarChart } from "recharts";
 
 interface Props {
+  className?: string;
   categories: Category[];
 }
 
-export default function CategoryBarChart({ categories }: Props) {
+export default function CategoryBarChart({ categories, className }: Props) {
   const colors = [
     "var(--chart-1)",
     "var(--chart-2)",
@@ -59,7 +61,7 @@ export default function CategoryBarChart({ categories }: Props) {
     .join(" | ");
 
   return (
-    <Card className="flex-1">
+    <Card className={cn("flex-1", className)}>
       <CardHeader>
         <CardTitle>Kategori</CardTitle>
         <CardDescription>

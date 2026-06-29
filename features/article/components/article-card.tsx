@@ -1,13 +1,22 @@
+"use client";
+
 import { Badge } from "@/components/ui/badge";
 import { Article } from "../types/article";
+import { useRouter } from "next/navigation";
+import { ROUTES } from "@/contants/routes";
 
 interface Props {
   article: Article;
 }
 
 export default function ArticleCard({ article }: Props) {
+  const router = useRouter();
+
   return (
-    <div className="space-y-2 hover:-translate-y-2 hover:-rotate-2 transition-all cursor-pointer">
+    <div
+      className="space-y-2 hover:-translate-y-2 hover:-rotate-2 transition-all cursor-pointer"
+      onClick={() => router.push(ROUTES.ARTICLE_DETAIL(article.slug))}
+    >
       <div className="relative">
         <div className="bg-muted aspect-video rounded-lg" />
         <Badge variant={"outline"} className="absolute bg-card top-2 left-2">

@@ -10,9 +10,9 @@ export const getArticlesQueryOptions = () =>
     staleTime: 1000 * 60 * 5,
   });
 
-export const getArticleByIdQueryOptions = (id: string) =>
+export const getArticleBySlugQueryOptions = (slug: string) =>
   queryOptions({
-    queryFn: () => getArticle(id),
-    queryKey: articleKeys.detail(id),
+    queryFn: () => getArticle(slug),
+    queryKey: articleKeys.detail(slug),
     staleTime: 1000 * 60 * 5,
   });

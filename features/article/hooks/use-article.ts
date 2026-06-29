@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getArticleByIdQueryOptions } from "../queries/article-queries";
+import { getArticleBySlugQueryOptions } from "../queries/article-queries";
 
-export const useArticle = (id: string) =>
-  useQuery(getArticleByIdQueryOptions(id));
+export const useArticle = (slug: string) =>
+  useQuery(getArticleBySlugQueryOptions(slug));

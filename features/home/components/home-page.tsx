@@ -2,9 +2,12 @@
 
 import ArticleCard from "@/features/article/components/article-card";
 import { useArticles } from "@/features/article/hooks/use-articles";
+import { useCategories } from "@/features/category/hooks/use-categories";
+import CategoryBarChart from "@/features/dashboard/components/category-bar-chart";
 
 export default function HomePage() {
   const { data: articles = [] } = useArticles();
+  const { data: categories = [] } = useCategories();
 
   return (
     <div className="space-y-4">
@@ -20,6 +23,8 @@ export default function HomePage() {
           <ArticleCard key={article.id} article={article} />
         ))}
       </div>
+
+      <CategoryBarChart categories={categories} />
     </div>
   );
 }
