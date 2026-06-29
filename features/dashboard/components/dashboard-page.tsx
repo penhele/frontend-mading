@@ -9,6 +9,30 @@ import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/contants/routes";
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
+import {
+  Area,
+  AreaChart,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+} from "recharts";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import CategoryBarChart from "./category-bar-chart";
+import CategoryPieChart from "./category-pie-chart";
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -42,6 +66,12 @@ export default function DashboardPage() {
         </div>
 
         <DataTable columns={articleColumns} data={articles} />
+      </div>
+
+      <div className="flex flex-row gap-4">
+        <CategoryBarChart categories={categories} />
+
+        <CategoryPieChart categories={categories} />
       </div>
     </div>
   );
