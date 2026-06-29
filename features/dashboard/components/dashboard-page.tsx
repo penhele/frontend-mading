@@ -23,6 +23,11 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-4">
+      <div className="">
+        <h1 className="text-xl font-semibold">Dashboard</h1>
+        <p className="text-xs text-muted-foreground">Kelola mading online</p>
+      </div>
+
       <div className="grid grid-cols-4 gap-4">
         {statsItem.map((stat, index) => (
           <StatsCard key={index} stat={stat} />

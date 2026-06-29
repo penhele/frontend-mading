@@ -20,11 +20,15 @@ interface Props {
 export default function StatusSelect({ articleId, status }: Props) {
   const { mutate } = useMutation({
     mutationFn: (data: UpdateArticlePayload) => updateArticle(articleId, data),
+    onMutate(variables, context) {
+      const toastId = toast.loading("Loading...");
+      return { toastId };
+    },
     onSuccess(data, variables, onMutateResult, context) {
-      toast.success("Berhasil");
+      toast.success("Berhasil", { id: onMutateResult.toastId });
     },
     onError(error, variables, onMutateResult, context) {
-      toast.error("Gagal");
+      toast.error("Gagal", { id: onMutateResult?.toastId });
     },
   });
 
