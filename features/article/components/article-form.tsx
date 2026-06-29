@@ -11,6 +11,7 @@ import { useCategories } from "@/features/category/hooks/use-categories";
 import { Card, CardContent } from "@/components/ui/card";
 import { Clock9, Eye } from "lucide-react";
 import { getCurrentTime } from "@/lib/utils/get-current-time";
+import { Badge } from "@/components/ui/badge";
 
 interface Props {
   defaultValues: ArticleFormValues;
@@ -118,7 +119,7 @@ export default function ArticleForm({ defaultValues, onSubmit }: Props) {
               <Card className="border-dashed">
                 <CardContent className="space-y-4">
                   <div className="flex justify-between">
-                    <div>{categoryName}</div>
+                    <Badge variant={'outline'}>{categoryName}</Badge>
 
                     <div className="flex flex-row items-center gap-1">
                       <Clock9 size={12} />

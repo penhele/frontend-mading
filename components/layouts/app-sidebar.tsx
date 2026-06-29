@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Sidebar,
   SidebarContent,
@@ -10,6 +12,7 @@ import {
 } from "@/components/ui/sidebar";
 import { ROUTES } from "@/contants/routes";
 import { LayoutDashboard } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export function AppSidebar() {
   const navItems = [
@@ -20,6 +23,8 @@ export function AppSidebar() {
     },
   ];
 
+  const router = useRouter();
+
   return (
     <Sidebar variant="floating" collapsible="icon">
       <SidebarHeader />
@@ -28,7 +33,7 @@ export function AppSidebar() {
           <SidebarMenu>
             {navItems.map((item, index) => (
               <SidebarMenuItem key={index}>
-                <SidebarMenuButton>
+                <SidebarMenuButton onClick={()=> router.push(item.route)}>
                   <item.Icon />
                   {item.label}
                 </SidebarMenuButton>
