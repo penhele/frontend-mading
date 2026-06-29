@@ -2,6 +2,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { Article } from "../types/article";
 import { Button } from "@/components/ui/button";
 import { Pencil, Trash2 } from "lucide-react";
+import StatusSelect from "./status-select";
 
 export const articleColumns: ColumnDef<Article>[] = [
   {
@@ -10,7 +11,9 @@ export const articleColumns: ColumnDef<Article>[] = [
   },
   {
     header: "Status",
-    cell: ({ row }) => <span>{row.original.status}</span>,
+    cell: ({ row }) => (
+      <StatusSelect articleId={row.original.id} status={row.original.status} />
+    ),
   },
   {
     accessorKey: "slug",
