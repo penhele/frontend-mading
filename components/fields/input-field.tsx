@@ -8,6 +8,7 @@ interface Props {
   placeholder?: string;
   isTextarea?: boolean;
   className?: string;
+  readOnly?: boolean;
 }
 
 export default function InputField({
@@ -15,6 +16,7 @@ export default function InputField({
   placeholder,
   isTextarea,
   className,
+  readOnly,
 }: Props) {
   const field = useFieldContext<string>();
 
@@ -28,6 +30,7 @@ export default function InputField({
           onChange={(e) => field.handleChange(e.target.value)}
           placeholder={placeholder}
           className={className}
+          readOnly={readOnly}
         />
       ) : (
         <Textarea
@@ -35,6 +38,7 @@ export default function InputField({
           onChange={(e) => field.handleChange(e.target.value)}
           placeholder={placeholder}
           className={className}
+          readOnly={readOnly}
         />
       )}
     </Field>

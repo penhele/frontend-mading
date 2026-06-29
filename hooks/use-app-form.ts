@@ -1,10 +1,11 @@
 "use client";
 
-import InputField from "@/components/field/input-field";
-import SelectField from "@/components/field/select-field";
+import SubmitButton from "@/components/buttons/submit-button";
+import InputField from "@/components/fields/input-field";
+import SelectField from "@/components/fields/select-field";
 import { createFormHook, createFormHookContexts } from "@tanstack/react-form";
 
-export const { fieldContext, formContext, useFieldContext } =
+export const { fieldContext, formContext, useFieldContext, useFormContext } =
   createFormHookContexts();
 
 export const { useAppForm } = createFormHook({
@@ -12,7 +13,9 @@ export const { useAppForm } = createFormHook({
     InputField,
     SelectField,
   },
-  formComponents: {},
+  formComponents: {
+    SubmitButton
+  },
   fieldContext,
   formContext,
 });

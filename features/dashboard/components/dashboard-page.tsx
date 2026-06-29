@@ -24,8 +24,8 @@ export default function DashboardPage() {
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-4 gap-4">
-        {statsItem.map((stat) => (
-          <StatsCard stat={stat} />
+        {statsItem.map((stat, index) => (
+          <StatsCard key={index} stat={stat} />
         ))}
       </div>
 
