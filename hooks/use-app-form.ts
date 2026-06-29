@@ -14,7 +14,7 @@ export const { useAppForm } = createFormHook({
     SelectField,
   },
   formComponents: {
-    SubmitButton
+    SubmitButton,
   },
   fieldContext,
   formContext,

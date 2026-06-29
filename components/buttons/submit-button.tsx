@@ -21,7 +21,7 @@ export default function SubmitButton({ className, label = "Submit" }: Props) {
       {({ isSubmitting, canSubmit }) => (
         <Button
           type="submit"
-          disabled={!canSubmit || isSubmitting}
+          // disabled={!canSubmit || isSubmitting}
           className={cn("min-w-24", className)}
         >
           {isSubmitting ? <Spinner /> : label}
