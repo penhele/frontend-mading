@@ -1,13 +1,20 @@
-import { useMutation } from "@tanstack/react-query";
+"use client";
+
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import ArticleForm from "./article-form";
 import { addArticle } from "../api/add-article";
 import { toast } from "sonner";
+import { articleKeys } from "../queries/article-keys";
 
 export default function CreateArticleForm() {
+  const queryClient = useQueryClient();
+
   const { mutateAsync } = useMutation({
     mutationFn: addArticle,
     onSuccess(data, variables, onMutateResult, context) {
       toast.success("Berhasil");
+
+      queryClient.invalidateQueries({ queryKey: articleKeys.all });
     },
     onError(error, variables, onMutateResult, context) {
       toast.error("Gagal");

@@ -119,7 +119,7 @@ export default function ArticleForm({ defaultValues, onSubmit }: Props) {
               <Card className="border-dashed">
                 <CardContent className="space-y-4">
                   <div className="flex justify-between">
-                    <Badge variant={'outline'}>{categoryName}</Badge>
+                    <Badge variant={"outline"}>{categoryName}</Badge>
 
                     <div className="flex flex-row items-center gap-1">
                       <Clock9 size={12} />

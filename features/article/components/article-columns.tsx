@@ -3,6 +3,9 @@ import { Article } from "../types/article";
 import { Button } from "@/components/ui/button";
 import { Pencil, Trash2 } from "lucide-react";
 import StatusSelect from "./status-select";
+import DeleteButton from "@/components/buttons/delete-button";
+import { deleteArticle } from "../api/delete-article";
+import { articleKeys } from "../queries/article-keys";
 
 export const articleColumns: ColumnDef<Article>[] = [
   {
@@ -31,9 +34,11 @@ export const articleColumns: ColumnDef<Article>[] = [
     header: "Aksi",
     cell: ({ row }) => (
       <div className="flex flex-row space-x-1">
-        <Button variant={"outline"} size={"icon-xs"}>
-          <Trash2 />
-        </Button>
+        <DeleteButton
+          id={row.original.id}
+          mutationFn={deleteArticle}
+          queryKey={articleKeys.all}
+        />
         <Button variant={"outline"} size={"icon-xs"}>
           <Pencil />
         </Button>

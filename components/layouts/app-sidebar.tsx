@@ -33,7 +33,7 @@ export function AppSidebar() {
           <SidebarMenu>
             {navItems.map((item, index) => (
               <SidebarMenuItem key={index}>
-                <SidebarMenuButton onClick={()=> router.push(item.route)}>
+                <SidebarMenuButton onClick={() => router.push(item.route)}>
                   <item.Icon />
                   {item.label}
                 </SidebarMenuButton>
