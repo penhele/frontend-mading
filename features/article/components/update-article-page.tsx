@@ -8,7 +8,7 @@ import UpdateArticleForm from "./update-article-form";
 
 export default function UpdateArticlePage() {
   const params = useParams();
-  const id = params.id as string;
+  const slug = params.slug as string;
 
   const router = useRouter();
 
@@ -27,7 +27,7 @@ export default function UpdateArticlePage() {
 
       <Separator />
 
-      <UpdateArticleForm id={id} />
+      <UpdateArticleForm slug={slug} />
     </div>
   );
 }

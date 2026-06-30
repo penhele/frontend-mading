@@ -1,13 +1,11 @@
-import { ColumnDef } from "@tanstack/react-table";
-import { Article } from "../types/article";
-import { Button } from "@/components/ui/button";
-import { Pencil, Trash2 } from "lucide-react";
-import StatusSelect from "./status-select";
 import DeleteButton from "@/components/buttons/delete-button";
-import { deleteArticle } from "../api/delete-article";
-import { articleKeys } from "../queries/article-keys";
 import EditButton from "@/components/buttons/edit-button";
 import { ROUTES } from "@/contants/routes";
+import { ColumnDef } from "@tanstack/react-table";
+import { deleteArticle } from "../api/delete-article";
+import { articleKeys } from "../queries/article-keys";
+import { Article } from "../types/article";
+import StatusSelect from "./status-select";
 
 export const articleColumns: ColumnDef<Article>[] = [
   {
@@ -41,7 +39,7 @@ export const articleColumns: ColumnDef<Article>[] = [
           mutationFn={deleteArticle}
           queryKey={articleKeys.all}
         />
-        <EditButton route={ROUTES.DASHBOARD_UPDATE_ARTICLE(row.original.id)} />
+        <EditButton route={ROUTES.DASHBOARD_UPDATE_ARTICLE(row.original.slug)} />
       </div>
     ),
   },

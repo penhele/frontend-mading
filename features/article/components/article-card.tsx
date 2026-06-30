@@ -5,6 +5,7 @@ import { Article } from "../types/article";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/contants/routes";
 import Image from "next/image";
+import { getFormatDate } from "@/lib/utils/get-format-date";
 
 interface Props {
   article: Article;
@@ -40,13 +41,13 @@ export default function ArticleCard({ article }: Props) {
           variant={"outline"}
           className="absolute bg-card right-2 bottom-2"
         >
-          {new Date(article.createdAt).toISOString()}
+          {getFormatDate(article.createdAt)}
         </Badge>
       </div>
 
       <div className="">
         <h1 className="font-semibold">{article.title}</h1>
-        <p className="text-sm text-muted-foreground">{article.content}</p>
+        <p className="text-xs text-muted-foreground line-clamp-3">{article.content}</p>
       </div>
     </div>
   );

@@ -9,14 +9,14 @@ import { UpdateArticlePayload } from "../types/update-article-payload";
 import ArticleForm from "./article-form";
 
 interface Props {
-  id: string;
+  slug: string;
 }
 
-export default function UpdateArticleForm({ id }: Props) {
+export default function UpdateArticleForm({ slug }: Props) {
   const queryClient = useQueryClient();
 
   const { mutateAsync } = useMutation({
-    mutationFn: (data: UpdateArticlePayload) => updateArticle(id, data),
+    mutationFn: (data: UpdateArticlePayload) => updateArticle(slug, data),
     onSuccess(data, variables, onMutateResult, context) {
       toast.success("Berhasil");
 
@@ -27,7 +27,7 @@ export default function UpdateArticleForm({ id }: Props) {
     },
   });
 
-  const { data: article } = useArticle(id);
+  const { data: article } = useArticle(slug);
   console.log(article);
 
   return (
