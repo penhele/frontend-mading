@@ -12,13 +12,15 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import { Category } from "@/features/category/types/category";
+import { Article } from "@/features/article/types/article";
 import { LabelList, Pie, PieChart } from "recharts";
 
 interface Props {
   categories: Category[];
+  articles?: Article[];
 }
 
-export default function CategoryPieChart({ categories }: Props) {
+export default function CategoryPieChart({ categories, articles }: Props) {
   const colors = [
     "var(--chart-1)",
     "var(--chart-2)",
@@ -35,9 +37,16 @@ export default function CategoryPieChart({ categories }: Props) {
     return acc;
   }, {} as ChartConfig);
 
+  const getArticleCount = (catId: number) => {
+    if (articles) {
+      return articles.filter((a) => a.category.id === catId).length;
+    }
+    return categories.find((c) => c.id === catId)?._count?.articles || 0;
+  };
+
   const chartData = categories.map((category) => ({
     category: category.name,
-    total: category._count.articles,
+    total: getArticleCount(category.id),
     fill: `var(--color-${category.slug})`,
   }));
 

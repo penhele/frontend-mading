@@ -101,9 +101,9 @@ export default function DashboardPage() {
       <div className="flex flex-col gap-2"></div>
 
       <div className="flex flex-row gap-4">
-        <CategoryBarChart categories={categories} />
+        <CategoryBarChart categories={categories} articles={articles} />
 
-        <CategoryPieChart categories={categories} />
+        <CategoryPieChart categories={categories} articles={articles} />
       </div>
     </div>
   );

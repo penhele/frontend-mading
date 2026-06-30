@@ -15,16 +15,37 @@ export default function HomePage() {
 
   return (
     <div className="space-y-4">
-      <div className="space-y-1">
-        {" "}
-        {/* Memperkecil jarak vertikal antara judul dan subjudul */}
-        <h1 className="text-2xl font-bold tracking-tight">
-          Halo Rekan DeSiWeM! 👋
-        </h1>
-        <p className="text-muted-foreground text-sm">
-          Siap tuangkan ide hari ini? Selamat datang di ruang kreativitas tanpa
-          batas digitalmu!
-        </p>
+      <div className="relative overflow-hidden rounded-3xl border border-border/50 bg-card/30 backdrop-blur-md px-6 py-10 md:px-10 md:py-14 shadow-lg">
+        {/* Glow Effects */}
+        <div className="pointer-events-none absolute -top-24 -right-24 size-80 rounded-full bg-primary/15 blur-3xl opacity-60 dark:bg-primary/10" />
+        <div className="pointer-events-none absolute -bottom-24 -left-24 size-80 rounded-full bg-blue-500/10 blur-3xl opacity-50 dark:bg-blue-500/5" />
+
+        <div className="relative z-10 space-y-4 max-w-2xl">
+          <span className="text-xs font-semibold uppercase tracking-widest text-primary flex items-center gap-1.5">
+            <span className="size-2 rounded-full bg-primary animate-pulse" />
+            Ruang Kreativitas Digital
+          </span>
+          
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-foreground via-foreground/90 to-primary bg-clip-text text-transparent leading-[1.1]">
+            Halo Rekan DeSiWeM! 👋
+          </h1>
+          
+          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+            Siap tuangkan ide hari ini? Selamat datang di ruang kreativitas tanpa batas digitalmu! Bagikan tulisan, cari info mading, dan temukan inspirasi menarik di sini.
+          </p>
+
+          <div className="flex flex-wrap items-center gap-6 pt-4 border-t border-border/10">
+            <div className="flex flex-col">
+              <span className="text-2xl font-bold text-foreground">{publishedArticles.length}</span>
+              <span className="text-xs text-muted-foreground">Artikel Terbit</span>
+            </div>
+            <div className="h-8 w-px bg-border/40" />
+            <div className="flex flex-col">
+              <span className="text-2xl font-bold text-foreground">{categories.length}</span>
+              <span className="text-xs text-muted-foreground">Kategori</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="relative left-1/2 overflow-hidden -translate-x-1/2 w-screen bg-card">
@@ -40,7 +61,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <CategoryBarChart categories={categories} />
+      <CategoryBarChart categories={categories} articles={publishedArticles} />
     </div>
   );
 }

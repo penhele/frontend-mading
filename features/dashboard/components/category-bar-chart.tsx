@@ -12,15 +12,17 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import { Category } from "@/features/category/types/category";
+import { Article } from "@/features/article/types/article";
 import { cn } from "@/lib/utils";
 import { CartesianGrid, XAxis, YAxis, Bar, BarChart } from "recharts";
 
 interface Props {
   className?: string;
   categories: Category[];
+  articles?: Article[];
 }
 
-export default function CategoryBarChart({ categories, className }: Props) {
+export default function CategoryBarChart({ categories, articles, className }: Props) {
   const colors = [
     "var(--chart-1)",
     "var(--chart-2)",
@@ -37,13 +39,20 @@ export default function CategoryBarChart({ categories, className }: Props) {
     return acc;
   }, {} as ChartConfig);
 
+  const getArticleCount = (catId: number) => {
+    if (articles) {
+      return articles.filter((a) => a.category.id === catId).length;
+    }
+    return categories.find((c) => c.id === catId)?._count?.articles || 0;
+  };
+
   const totalArticlesFromCategories = categories.reduce(
-    (sum, cat) => sum + (cat._count?.articles || 0),
+    (sum, cat) => sum + getArticleCount(cat.id),
     0,
   );
 
   const chartData = categories.map((category, index) => {
-    const count = category._count?.articles || 0;
+    const count = getArticleCount(category.id);
     const percentage =
       totalArticlesFromCategories > 0
         ? Math.round((count / totalArticlesFromCategories) * 100)

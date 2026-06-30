@@ -1,11 +1,17 @@
+"use client";
+
 import { AppSidebar } from "@/components/layouts/app-sidebar";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { useMe } from "@/features/auth/hooks/use-me";
 
 export default function DashboardLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { data: user } = useMe();
+  const initial = user?.name ? user.name[0].toUpperCase() : "?";
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -18,14 +24,16 @@ export default function DashboardLayout({
         >
           <SidebarTrigger />
 
-          <div className="flex flex-row space-x-2">
-            <div className="rounded-full bg-sky-400 aspect-square w-8 text-xs text-primary flex items-center justify-center">
-              S
+          <div className="flex flex-row space-x-2 items-center">
+            <div className="rounded-full bg-sky-400 aspect-square w-8 text-xs text-primary font-bold flex items-center justify-center">
+              {initial}
             </div>
             <div className="flex flex-col">
-              <span className="font-semibold text-xs">Stephen Helenus</span>
+              <span className="font-semibold text-xs">
+                {user?.name || "Memuat..."}
+              </span>
               <span className="text-muted-foreground text-xs">
-                stephenhelk@gmail.com
+                {user?.username}
               </span>
             </div>
           </div>
