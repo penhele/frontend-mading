@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Article } from "../types/article";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/contants/routes";
+import Image from "next/image";
 
 interface Props {
   article: Article;
@@ -18,7 +19,19 @@ export default function ArticleCard({ article }: Props) {
       onClick={() => router.push(ROUTES.ARTICLE_DETAIL(article.slug))}
     >
       <div className="relative">
-        <div className="bg-muted aspect-video rounded-lg" />
+        {article.imageUrl ? (
+          <div className="relative aspect-video rounded-lg">
+            <Image
+              src={article.imageUrl}
+              alt={`${article.slug}-image`}
+              fill
+              className="rounded-lg object-cover"
+            />
+          </div>
+        ) : (
+          <div className="bg-muted aspect-video rounded-lg" />
+        )}
+
         <Badge variant={"outline"} className="absolute bg-card top-2 left-2">
           {article.category.name}
         </Badge>
