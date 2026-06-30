@@ -12,6 +12,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Clock9, Eye } from "lucide-react";
 import { getCurrentTime } from "@/lib/utils/get-current-time";
 import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
 
 interface Props {
   defaultValues: ArticleFormValues;
@@ -106,12 +107,13 @@ export default function ArticleForm({ defaultValues, onSubmit }: Props) {
       <form.Subscribe
         selector={(state) => ({
           title: state.values.title,
+          imageUrl: state.values.imageUrl,
           slug: state.values.slug,
           categoryId: state.values.categoryId,
           content: state.values.content,
         })}
       >
-        {({ title, slug, categoryId, content }) => {
+        {({ title, slug, categoryId, content, imageUrl }) => {
           const categoryName =
             data.find((item) => item.id === Number(categoryId))?.name ||
             "Kategori";
@@ -134,7 +136,18 @@ export default function ArticleForm({ defaultValues, onSubmit }: Props) {
                     </div>
                   </div>
 
-                  <div className="aspect-video bg-muted rounded-lg" />
+                  {imageUrl ? (
+                    <div className="relative aspect-video">
+                      <Image
+                        src={imageUrl}
+                        fill
+                        alt={`${title}-image`}
+                        className="object-cover rounded-lg"
+                      />
+                    </div>
+                  ) : (
+                    <div className="aspect-video bg-muted rounded-lg" />
+                  )}
 
                   <div className="space-y-1">
                     <h1 className="text-2xl font-bold">

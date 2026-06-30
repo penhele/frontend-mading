@@ -3,5 +3,5 @@ export default function PublicLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <div className="max-w-4xl mx-auto w-full">{children}</div>;
+  return <div className="max-w-4xl mx-auto w-full py-4">{children}</div>;
 }

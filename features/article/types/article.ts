@@ -11,5 +11,5 @@ export interface Article {
   user: User;
   category: Category;
   createdAt: Date;
-  updatedAt: string;
+  updatedAt: Date;
 }

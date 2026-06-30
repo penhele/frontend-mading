@@ -6,5 +6,5 @@ export interface Category {
   slug: string;
   _count: CategoryCount;
   createdAt: Date;
-  updatedAt: string;
+  updatedAt: Date;
 }

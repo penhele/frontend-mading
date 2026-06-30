@@ -4,5 +4,8 @@ import { Article } from "../types/article";
 export const getArticles = async (): Promise<Article[]> => {
   const { data } = await api.get("/articles");
 
-  return data;
+  return (data || []).map((item: any) => ({
+    ...item,
+    imageUrl: item.imageUrl || item.image_url,
+  }));
 };

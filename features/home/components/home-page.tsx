@@ -9,6 +9,10 @@ export default function HomePage() {
   const { data: articles = [] } = useArticles();
   const { data: categories = [] } = useCategories();
 
+  const publishedArticles = articles.filter(
+    (article) => article.status === "PUBLISHED",
+  );
+
   return (
     <div className="space-y-4">
       <div className="space-y-1">
@@ -30,7 +34,7 @@ export default function HomePage() {
         <div className="pointer-events-none absolute -bottom-32 left-[5%] h-96 w-96 rounded-full bg-blue-500/8 dark:bg-blue-500/4 blur-3xl opacity-80" />
 
         <div className="max-w-4xl mx-auto grid grid-cols-3 gap-4 py-8">
-          {articles.map((article) => (
+          {publishedArticles.map((article) => (
             <ArticleCard key={article.id} article={article} />
           ))}
         </div>
