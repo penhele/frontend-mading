@@ -10,7 +10,7 @@ export default function DashboardLayout({
     <SidebarProvider>
       <AppSidebar />
 
-      <main className="flex-1 px-2 py-2 space-y-2">
+      <main className="flex-1 px-2 py-2 space-y-4">
         <div
           className="
         p-2 border ring-1 ring-foreground/10 bg-card rounded-lg 

@@ -46,11 +46,19 @@ export default function LoginForm() {
         className="space-y-4"
       >
         <form.AppField name="username">
-          {(field) => <field.InputField label="Username" />}
+          {(field) => (
+            <field.InputField label="Username" placeholder="Username" />
+          )}
         </form.AppField>
 
         <form.AppField name="password">
-          {(field) => <field.InputField label="Password" />}
+          {(field) => (
+            <field.InputField
+              label="Password"
+              placeholder="••••••••"
+              isPassword
+            />
+          )}
         </form.AppField>
 
         <form.SubmitButton label="Login" className="w-full" />

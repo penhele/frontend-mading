@@ -41,60 +41,67 @@ export default function ArticleForm({ defaultValues, onSubmit }: Props) {
 
   return (
     <div className="grid grid-cols-3 gap-4">
-      <form.AppForm>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            form.handleSubmit();
-          }}
-          className="space-y-4 grid-cols-2"
-        >
-          <form.AppField
-            name="title"
-            listeners={{
-              onChange: ({ value }) => {
-                form.setFieldValue("slug", getSlugify(value));
-              },
-            }}
-          >
-            {(field) => (
-              <field.InputField label="Judul" placeholder="The Open House" />
-            )}
-          </form.AppField>
+      <Card className="h-fit">
+        <CardContent>
+          <form.AppForm>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                form.handleSubmit();
+              }}
+              className="space-y-4 grid-cols-2"
+            >
+              <form.AppField
+                name="title"
+                listeners={{
+                  onChange: ({ value }) => {
+                    form.setFieldValue("slug", getSlugify(value));
+                  },
+                }}
+              >
+                {(field) => (
+                  <field.InputField
+                    label="Judul"
+                    placeholder="The Open House"
+                  />
+                )}
+              </form.AppField>
 
-          <form.AppField name="slug">
-            {(field) => (
-              <field.InputField
-                label="Tautan URL"
-                placeholder="The Open House"
-                readOnly
-              />
-            )}
-          </form.AppField>
+              <form.AppField name="slug">
+                {(field) => (
+                  <field.InputField
+                    label="Tautan URL"
+                    placeholder="The Open House"
+                    readOnly
+                  />
+                )}
+              </form.AppField>
 
-          <form.AppField name="categoryId">
-            {(field) => (
-              <field.SelectField
-                label="Kategori"
-                placeholder="The Open House"
-                options={categories}
-              />
-            )}
-          </form.AppField>
+              <form.AppField name="categoryId">
+                {(field) => (
+                  <field.SelectField
+                    label="Kategori"
+                    placeholder="The Open House"
+                    options={categories}
+                  />
+                )}
+              </form.AppField>
 
-          <form.AppField name="content">
-            {(field) => (
-              <field.InputField
-                label="Konten"
-                placeholder="The Open House"
-                isTextarea
-              />
-            )}
-          </form.AppField>
+              <form.AppField name="content">
+                {(field) => (
+                  <field.InputField
+                    label="Konten"
+                    placeholder="The Open House"
+                    isTextarea
+                  />
+                )}
+              </form.AppField>
 
-          <form.SubmitButton />
-        </form>
-      </form.AppForm>
+              <form.SubmitButton />
+            </form>
+          </form.AppForm>
+        </CardContent>
+      </Card>
 
       <form.Subscribe
         selector={(state) => ({

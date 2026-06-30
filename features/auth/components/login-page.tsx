@@ -6,10 +6,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import LoginForm from "./login-form";
+import { AuroraBackground } from "@/components/ui/aurora-background";
 
 export default function LoginPage() {
   return (
-    <div className="relative">
+    <AuroraBackground>
       <Card className="absolute w-md">
         <CardHeader>
           <CardTitle>Login</CardTitle>
@@ -20,6 +21,6 @@ export default function LoginPage() {
           <LoginForm />
         </CardContent>
       </Card>
-    </div>
+    </AuroraBackground>
   );
 }

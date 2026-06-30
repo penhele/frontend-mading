@@ -1,38 +1,16 @@
 "use client";
 
 import { DataTable } from "@/components/data-table";
+import { Button } from "@/components/ui/button";
+import { ROUTES } from "@/contants/routes";
 import { articleColumns } from "@/features/article/components/article-columns";
 import { useArticles } from "@/features/article/hooks/use-articles";
-import StatsCard from "./stats-card";
 import { useCategories } from "@/features/category/hooks/use-categories";
-import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { ROUTES } from "@/contants/routes";
-import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/components/ui/chart";
-import {
-  Area,
-  AreaChart,
-  Bar,
-  BarChart,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-} from "recharts";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import CategoryBarChart from "./category-bar-chart";
 import CategoryPieChart from "./category-pie-chart";
+import StatsCard from "./stats-card";
 
 export default function DashboardPage() {
   const router = useRouter();
