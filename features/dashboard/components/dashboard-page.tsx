@@ -11,6 +11,8 @@ import { useRouter } from "next/navigation";
 import CategoryBarChart from "./category-bar-chart";
 import CategoryPieChart from "./category-pie-chart";
 import StatsCard from "./stats-card";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import CreateCategoryForm from "@/features/category/components/create-category-form";
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -37,7 +39,25 @@ export default function DashboardPage() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <div className="">
+        <div className="space-x-2">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant={"outline"} className="bg-card">
+                <Plus /> Tambah Kategori
+              </Button>
+            </SheetTrigger>
+
+            <SheetContent>
+<SheetHeader>
+  <SheetTitle>
+    Buat Kategori
+  </SheetTitle>
+</SheetHeader>
+
+              <CreateCategoryForm className="p-6"/>
+            </SheetContent>
+          </Sheet>
+
           <Button onClick={() => router.push(ROUTES.DASHBOARD_CREATE_ARTICLE)}>
             <Plus /> Tambah Artikel
           </Button>

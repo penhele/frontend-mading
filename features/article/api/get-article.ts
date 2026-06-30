@@ -4,5 +4,8 @@ import { Article } from "../types/article";
 export const getArticle = async (slug: string): Promise<Article> => {
   const { data } = await api.get(`/articles/${slug}`);
 
-  return data;
+  return {
+    ...data,
+    imageUrl: data.imageUrl || data.image_url,
+  };
 };
