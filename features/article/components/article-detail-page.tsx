@@ -39,7 +39,7 @@ export default function ArticleDetailPage() {
     );
   }
 
-  if (error || !article) {
+  if (error || !article || article.status !== "PUBLISHED") {
     return (
       <div className="flex flex-col items-center justify-center text-center py-20 px-4 max-w-md mx-auto space-y-4">
         <div className="bg-destructive/10 p-3 rounded-full text-destructive">
@@ -47,7 +47,8 @@ export default function ArticleDetailPage() {
         </div>
         <h2 className="text-xl font-bold">Artikel Tidak Ditemukan</h2>
         <p className="text-sm text-muted-foreground">
-          Artikel dengan tautan tersebut tidak dapat ditemukan atau telah dihapus.
+          Artikel dengan tautan tersebut tidak dapat ditemukan atau telah
+          dihapus.
         </p>
         <Button onClick={() => router.push("/")} variant="default">
           Kembali ke Beranda

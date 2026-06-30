@@ -1,4 +1,4 @@
 export interface CreateCategoryPayload {
-    name: string
-    slug: string
+  name: string;
+  slug: string;
 }

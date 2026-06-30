@@ -47,7 +47,9 @@ export default function ArticleCard({ article }: Props) {
 
       <div className="">
         <h1 className="font-semibold">{article.title}</h1>
-        <p className="text-xs text-muted-foreground line-clamp-3">{article.content}</p>
+        <p className="text-xs text-muted-foreground line-clamp-3">
+          {article.content}
+        </p>
       </div>
     </div>
   );

@@ -7,9 +7,13 @@ import { toast } from "sonner";
 import { articleKeys } from "../queries/article-keys";
 import { Card, CardContent } from "@/components/ui/card";
 import { useMe } from "@/features/auth/hooks/use-me";
+import { useRouter } from "next/navigation";
+import { ROUTES } from "@/contants/routes";
 
 export default function CreateArticleForm() {
   const queryClient = useQueryClient();
+  const router = useRouter();
+
   const { data: user, isLoading } = useMe();
 
   const { mutateAsync } = useMutation({
@@ -18,6 +22,7 @@ export default function CreateArticleForm() {
       toast.success("Berhasil");
 
       queryClient.invalidateQueries({ queryKey: articleKeys.all });
+      router.push(ROUTES.DASHBOARD);
     },
     onError(error, variables, onMutateResult, context) {
       toast.error("Gagal");
@@ -45,4 +50,3 @@ export default function CreateArticleForm() {
     />
   );
 }
-
